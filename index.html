@@ -401,20 +401,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
 
 <!-- ── FIREBASE ── -->
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js';
 
 // ── FIREBASE CONFIG ─────────────────────────────────────────
-// 🔧 REPLACE WITH YOUR OWN FIREBASE PROJECT CONFIG
-// Get it from: Firebase Console → Project Settings → Your Apps → Config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAsP9YWKZbiw7a19r-jo0Uw90yKhbV8bDQ",
+  authDomain: "habits-tracker-dcff9.firebaseapp.com",
+  projectId: "habits-tracker-dcff9",
+  storageBucket: "habits-tracker-dcff9.firebasestorage.app",
+  messagingSenderId: "397901830925",
+  appId: "1:397901830925:web:94b6de3591ed316efbae44",
+  measurementId: "G-CW65HFZ118"
 };
 
 const app = initializeApp(firebaseConfig);
