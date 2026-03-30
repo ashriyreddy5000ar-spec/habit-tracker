@@ -1,1 +1,51 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Digital Clock</title>\n    <style>\n        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }\n        .clock { font-size: 48px; margin: 20px; }\n        .timezone { font-size: 24px; }\n    </style>\n</head>\n<body>\n    <h1>Digital Clock</h1>\n    <div class="clock" id="clock"></div>\n    <script>\n        const timezones = [\n            { name: 'UTC', offset: 0 },\n            { name: 'EST', offset: -5 },\n            { name: 'CST', offset: -6 },\n            { name: 'MST', offset: -7 },\n            { name: 'PST', offset: -8 },\n            { name: 'GMT', offset: 0 },\n            { name: 'CET', offset: 1 },\n            { name: 'IST', offset: 5.5 }\n        ];\n        function updateClock() {\n            const now = new Date();\n            timezones.forEach(tz => {\n                const localTime = new Date(now.getTime() + (tz.offset * 60 * 60 * 1000));\n                document.getElementById('clock').innerHTML = `<div class='timezone'>${tz.name}: ${localTime.toUTCString().slice(17, 25)}</div>`;\n            });\n        }\n        setInterval(updateClock, 1000);\n        updateClock();\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+        #clock {
+            font-size: 5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const utc = now.toUTCString().slice(17, 25);
+
+            // Timezone Offsets
+            const timezones = {
+                "UTC": 0,
+                "PST": -7,
+                "CST": -5,
+                "EST": -4,
+            };
+
+            let timeString = `UTC: ${utc}`;
+
+            for (const [label, offset] of Object.entries(timezones)) {
+                const localTime = new Date(now.getTime() + offset * 60 * 60 * 1000);
+                timeString += `\n${label}: ${localTime.toTimeString().slice(0, 8)}`;
+            }
+
+            document.getElementById('clock').innerText = timeString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
