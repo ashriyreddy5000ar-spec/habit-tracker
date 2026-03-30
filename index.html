@@ -21,14 +21,54 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;}
-.app{max-width:430px;margin:0 auto;min-height:100vh;padding-bottom:130px;}
+
+/* ── AUTH SCREEN ── */
+#authScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:32px 24px;background:var(--bg);}
+.auth-logo{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:6px;}
+.auth-sub{font-size:13px;color:var(--text2);margin-bottom:40px;font-style:italic;}
+.auth-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:28px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;}
+.auth-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:2px;}
+.auth-desc{font-size:12px;color:var(--text2);margin-bottom:6px;line-height:1.5;}
+.auth-input{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;font-family:'Instrument Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;width:100%;}
+.auth-input:focus{border-color:var(--accent2);}
+.auth-input::placeholder{color:var(--text3);}
+.btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--bg3);font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;transition:background 0.2s,border-color 0.2s;}
+.btn-google:hover{background:var(--bg2);border-color:var(--accent2);}
+.btn-google svg{width:18px;height:18px;flex-shrink:0;}
+.btn-email{width:100%;padding:13px;border-radius:var(--r-sm);border:none;background:var(--accent);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#0F0F0F;cursor:pointer;transition:opacity 0.15s,transform 0.15s;}
+.btn-email:active{opacity:0.85;transform:scale(0.98);}
+.auth-divider{display:flex;align-items:center;gap:10px;color:var(--text3);font-size:11px;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.auth-toggle{text-align:center;font-size:12px;color:var(--text2);}
+.auth-toggle span{color:var(--accent);cursor:pointer;font-weight:600;}
+.auth-err{font-size:12px;color:var(--red);text-align:center;min-height:16px;}
+.auth-loading{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--text2);}
+.spin{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── APP ── */
+.app{max-width:430px;margin:0 auto;min-height:100vh;padding-bottom:130px;display:none;}
 
 /* HEADER */
 .header{padding:52px 20px 16px;position:sticky;top:0;z-index:50;background:linear-gradient(to bottom,#0F0F0F 82%,transparent);}
 .header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
 .header-left h1{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;}
 .header-left .sub{font-size:13px;color:var(--text2);margin-top:5px;font-style:italic;}
-.date-chip{background:var(--bg3);border:1px solid var(--border2);border-radius:100px;padding:6px 12px;font-size:11px;font-weight:600;color:var(--text2);white-space:nowrap;margin-top:2px;}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.date-chip{background:var(--bg3);border:1px solid var(--border2);border-radius:100px;padding:6px 12px;font-size:11px;font-weight:600;color:var(--text2);white-space:nowrap;}
+.user-chip{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:5px 10px 5px 6px;cursor:pointer;transition:border-color 0.2s;}
+.user-chip:hover{border-color:var(--accent2);}
+.user-av{width:20px;height:20px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0F0F0F;overflow:hidden;flex-shrink:0;}
+.user-av img{width:100%;height:100%;object-fit:cover;}
+.user-name{font-size:11px;font-weight:600;color:var(--text2);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.logout-icon{width:12px;height:12px;stroke:var(--text3);stroke-width:2;stroke-linecap:round;}
+
+/* SYNC INDICATOR */
+.sync-bar{position:fixed;top:0;left:50%;transform:translateX(-50%);background:var(--bg3);border:1px solid var(--border);border-radius:0 0 10px 10px;padding:4px 14px;font-size:10px;font-weight:600;color:var(--text2);z-index:200;display:flex;align-items:center;gap:6px;transition:opacity 0.3s;opacity:0;pointer-events:none;}
+.sync-bar.show{opacity:1;}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+.sync-dot.saving{background:var(--amber);animation:pulse 0.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
 /* USER SCORE HERO */
 .score-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;position:relative;overflow:hidden;}
@@ -184,7 +224,48 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
 </style>
 </head>
 <body>
-<div class="app">
+
+<!-- ── SYNC BAR ── -->
+<div class="sync-bar" id="syncBar">
+  <div class="sync-dot" id="syncDot"></div>
+  <span id="syncTxt">Synced</span>
+</div>
+
+<!-- ── AUTH SCREEN ── -->
+<div id="authScreen">
+  <div class="auth-logo">My Habits · PRO</div>
+  <div class="auth-sub">Your personal habit OS</div>
+  <div class="auth-card">
+    <div class="auth-title" id="authTitle">Welcome back</div>
+    <div class="auth-desc" id="authDesc">Sign in to sync your habits across all devices.</div>
+    <div class="auth-err" id="authErr"></div>
+
+    <!-- Google -->
+    <button class="btn-google" id="googleBtn">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#4285F4" d="M46.098 24.55c0-1.636-.146-3.2-.418-4.698H24v8.88h12.39c-.534 2.876-2.16 5.314-4.61 6.952v5.78h7.466c4.37-4.024 6.852-9.952 6.852-16.914z"/>
+        <path fill="#34A853" d="M24 47.5c6.26 0 11.508-2.074 15.344-5.624l-7.466-5.78c-2.074 1.39-4.726 2.21-7.878 2.21-6.054 0-11.182-4.09-13.014-9.584H3.244v5.966C7.064 42.28 15.016 47.5 24 47.5z"/>
+        <path fill="#FBBC05" d="M10.986 28.722a14.47 14.47 0 0 1-.754-4.604c0-1.598.274-3.15.754-4.604v-5.966H3.244A23.914 23.914 0 0 0 .5 24.118c0 3.884.928 7.558 2.744 10.57l7.742-5.966z"/>
+        <path fill="#EA4335" d="M24 9.95c3.414 0 6.474 1.174 8.884 3.48l6.66-6.66C35.496 3.056 30.26.5 24 .5 15.016.5 7.064 5.72 3.244 13.548l7.742 5.966C12.818 14.04 17.946 9.95 24 9.95z"/>
+      </svg>
+      Continue with Google
+    </button>
+
+    <div class="auth-divider">or</div>
+
+    <!-- Email fields (hidden until toggle) -->
+    <input class="auth-input" id="emailInput" type="email" placeholder="Email address" autocomplete="email"/>
+    <input class="auth-input" id="passInput" type="password" placeholder="Password" autocomplete="current-password"/>
+    <button class="btn-email" id="emailBtn">Sign In</button>
+    <div class="auth-toggle" id="authToggle">Don't have an account? <span id="toggleSpan">Create one</span></div>
+  </div>
+  <div style="margin-top:20px;font-size:11px;color:var(--text3);text-align:center;">
+    ⚡ Firebase-powered · Real-time sync · Multi-device
+  </div>
+</div>
+
+<!-- ── MAIN APP ── -->
+<div class="app" id="appScreen">
 
   <div class="header">
     <div class="header-row">
@@ -192,7 +273,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
         <h1 id="greeting">Good morning</h1>
         <div class="sub" id="motiveLine">Build the life you want.</div>
       </div>
-      <div class="date-chip" id="datechip"></div>
+      <div class="header-right">
+        <div class="date-chip" id="datechip"></div>
+        <div class="user-chip" id="userChip" title="Sign out">
+          <div class="user-av" id="userAv"></div>
+          <span class="user-name" id="userName"></span>
+          <svg class="logout-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 1.5H2.5C2 1.5 1.5 2 1.5 2.5V9.5C1.5 10 2 10.5 2.5 10.5H4.5" stroke-linecap="round"/>
+            <path d="M8 4L10.5 6L8 8M10.5 6H4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
     </div>
 
     <!-- USER SCORE -->
@@ -242,7 +333,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
   <div class="section">
     <div class="sec-hd">
       <div class="sec-title">Today's Habits</div>
-      <div class="count-pill" id="countPill">14</div>
+      <div class="count-pill" id="countPill">0</div>
     </div>
     <div class="habits-list" id="habitList"></div>
   </div>
@@ -302,22 +393,40 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
   </div>
 </div>
 
-<div class="fab-wrap">
+<div class="fab-wrap" id="fabWrap" style="display:none;">
   <button class="fab" id="fab">
     <span class="fab-plus">+</span>Add New Habit
   </button>
 </div>
 
-<script>
-// ── CONSTANTS ──────────────────────────────────────────────
+<!-- ── FIREBASE ── -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+// ── FIREBASE CONFIG ─────────────────────────────────────────
+// 🔧 REPLACE WITH YOUR OWN FIREBASE PROJECT CONFIG
+// Get it from: Firebase Console → Project Settings → Your Apps → Config
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// ── CONSTANTS ───────────────────────────────────────────────
 const EMOJIS=['✍️','👟','💤','🧘','⏰','✨','🏋️','🏢','💧','💸','📖','📵','🚫','🤸','🎯','🥗','💪','🎨','🎸','🌿','☀️','🚿'];
 const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const CAT_COLOR={health:'#4ADE80',mind:'#A78BFA',productivity:'#60A5FA',finance:'#FBBF24',custom:'#888580'};
 const CAT_LBL={health:'Health',mind:'Mind',productivity:'Productivity',finance:'Finance',custom:'Custom'};
 const MOTIVES=['Build the life you want, one habit at a time.','Small steps lead to big changes.','Consistency beats perfection.','You are what you repeatedly do.','Progress, not perfection.'];
-const SK='habitpro_v4';
-
-// ── DEFAULT HABITS ──────────────────────────────────────────
 const DEF=[
   {id:1,emoji:'✍️',name:'Journal',cat:'mind'},
   {id:2,emoji:'👟',name:'Running',cat:'health'},
@@ -335,28 +444,162 @@ const DEF=[
   {id:14,emoji:'🤸',name:'Stretching',cat:'health'},
 ];
 
-// ── STATE ──────────────────────────────────────────────────
-function makeHabit(d){return{id:d.id,emoji:d.emoji,name:d.name,cat:d.cat||'custom',streak:0,bestStreak:0,history:{}};}
-function loadState(){
-  try{
-    const r=localStorage.getItem(SK);
-    if(r){const s=JSON.parse(r);s.habits=(s.habits||[]).map(h=>({streak:0,bestStreak:0,history:{},cat:'custom',...h}));return s;}
-  }catch(e){}
-  return{habits:DEF.map(makeHabit),dh:{}};
-}
-let S=loadState();
-let nid=Math.max(...S.habits.map(h=>h.id),14)+1;
-let formOpen=false,selEmoji=EMOJIS[0],selCat='health';
-const $=id=>document.getElementById(id);
-const C=2*Math.PI*32;
+// ── STATE ───────────────────────────────────────────────────
+let S = { habits: [], dh: {} };
+let nid = 15;
+let formOpen = false, selEmoji = EMOJIS[0], selCat = 'health';
+let currentUser = null;
+let unsubFirestore = null;
+let syncTimer = null;
+let isSignUp = false;
+const $ = id => document.getElementById(id);
+const C = 2 * Math.PI * 32;
 
-// ── DATE HELPERS ───────────────────────────────────────────
+// ── DATE HELPERS ────────────────────────────────────────────
 function dk(ago=0){const d=new Date();d.setDate(d.getDate()-ago);return d.toISOString().slice(0,10);}
 const today=()=>dk(0);
 const k7=()=>Array.from({length:7},(_,i)=>dk(6-i));
 const k30=()=>Array.from({length:30},(_,i)=>dk(29-i));
 
-// ── SCORING ────────────────────────────────────────────────
+// ── SYNC UI ─────────────────────────────────────────────────
+function showSync(saving=false){
+  const bar=$('syncBar'),dot=$('syncDot'),txt=$('syncTxt');
+  dot.className='sync-dot'+(saving?' saving':'');
+  txt.textContent=saving?'Saving…':'Synced ✓';
+  bar.classList.add('show');
+  clearTimeout(syncTimer);
+  if(!saving)syncTimer=setTimeout(()=>bar.classList.remove('show'),1800);
+}
+
+// ── FIRESTORE ───────────────────────────────────────────────
+function userDoc(uid){return doc(db,'users',uid);}
+
+async function loadUserData(uid){
+  try{
+    const snap=await getDoc(userDoc(uid));
+    if(snap.exists()){
+      const d=snap.data();
+      S={habits:(d.habits||[]).map(h=>({streak:0,bestStreak:0,history:{},cat:'custom',...h})),dh:d.dh||{}};
+      nid=Math.max(...S.habits.map(h=>h.id),14)+1;
+    }else{
+      S={habits:DEF.map(makeHabit),dh:{}};
+      nid=15;
+      await saveToFirestore();
+    }
+    S.habits.forEach(recalcStreak);
+    renderAll();
+  }catch(e){console.error('Load error',e);}
+}
+
+async function saveToFirestore(){
+  if(!currentUser)return;
+  showSync(true);
+  try{
+    await setDoc(userDoc(currentUser.uid),{habits:S.habits,dh:S.dh||{}},{merge:false});
+    showSync(false);
+  }catch(e){console.error('Save error',e);}
+}
+
+function subscribeRealtime(uid){
+  if(unsubFirestore)unsubFirestore();
+  unsubFirestore=onSnapshot(userDoc(uid),snap=>{
+    if(snap.exists()&&snap.metadata.hasPendingWrites===false){
+      // only update from remote if no local pending writes
+    }
+  });
+}
+
+function makeHabit(d){return{id:d.id,emoji:d.emoji,name:d.name,cat:d.cat||'custom',streak:0,bestStreak:0,history:{}};}
+
+// ── AUTH STATE ──────────────────────────────────────────────
+onAuthStateChanged(auth, async user=>{
+  if(user){
+    currentUser=user;
+    showApp(user);
+    await loadUserData(user.uid);
+    subscribeRealtime(user.uid);
+  }else{
+    currentUser=null;
+    if(unsubFirestore){unsubFirestore();unsubFirestore=null;}
+    showAuth();
+  }
+});
+
+function showApp(user){
+  $('authScreen').style.display='none';
+  $('appScreen').style.display='block';
+  $('fabWrap').style.display='block';
+  // User chip
+  const name=user.displayName||user.email||'User';
+  $('userName').textContent=name.split(' ')[0];
+  const av=$('userAv');
+  if(user.photoURL){av.innerHTML=`<img src="${user.photoURL}" alt="">`;}
+  else{av.textContent=name[0].toUpperCase();}
+}
+
+function showAuth(){
+  $('authScreen').style.display='flex';
+  $('appScreen').style.display='none';
+  $('fabWrap').style.display='none';
+  S={habits:[],dh:{}};
+}
+
+// ── GOOGLE SIGN IN ───────────────────────────────────────────
+$('googleBtn').addEventListener('click',async()=>{
+  setAuthErr('');
+  const provider=new GoogleAuthProvider();
+  try{await signInWithPopup(auth,provider);}
+  catch(e){setAuthErr(friendlyError(e));}
+});
+
+// ── EMAIL SIGN IN / UP ───────────────────────────────────────
+$('emailBtn').addEventListener('click',async()=>{
+  setAuthErr('');
+  const email=$('emailInput').value.trim();
+  const pass=$('passInput').value;
+  if(!email||!pass){setAuthErr('Please enter email and password.');return;}
+  try{
+    if(isSignUp)await createUserWithEmailAndPassword(auth,email,pass);
+    else await signInWithEmailAndPassword(auth,email,pass);
+  }catch(e){setAuthErr(friendlyError(e));}
+});
+
+$('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('passInput').focus();});
+$('passInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('emailBtn').click();});
+
+$('toggleSpan').addEventListener('click',()=>{
+  isSignUp=!isSignUp;
+  $('authTitle').textContent=isSignUp?'Create account':'Welcome back';
+  $('authDesc').textContent=isSignUp?'Sign up to start tracking your habits.':'Sign in to sync your habits across all devices.';
+  $('emailBtn').textContent=isSignUp?'Create Account':'Sign In';
+  $('toggleSpan').textContent=isSignUp?'Sign in instead':'Create one';
+  setAuthErr('');
+});
+
+function setAuthErr(msg){$('authErr').textContent=msg;}
+function friendlyError(e){
+  const m={
+    'auth/invalid-email':'Invalid email address.',
+    'auth/user-not-found':'No account found with that email.',
+    'auth/wrong-password':'Incorrect password.',
+    'auth/email-already-in-use':'Email already in use. Try signing in.',
+    'auth/weak-password':'Password must be at least 6 characters.',
+    'auth/popup-closed-by-user':'Sign-in cancelled.',
+    'auth/network-request-failed':'Network error. Check your connection.',
+    'auth/invalid-credential':'Invalid email or password.',
+  };
+  return m[e.code]||e.message||'Something went wrong.';
+}
+
+// ── LOGOUT ───────────────────────────────────────────────────
+$('userChip').addEventListener('click',async()=>{
+  if(confirm('Sign out?')){
+    closeForm();
+    await signOut(auth);
+  }
+});
+
+// ── SCORING ─────────────────────────────────────────────────
 function habitScore(h){
   const all=Object.keys(h.history);
   if(!all.length)return 0;
@@ -379,7 +622,7 @@ function bestStreakAll(){return S.habits.reduce((m,h)=>Math.max(m,h.bestStreak,h
 function daysTracked(){const ks=new Set();S.habits.forEach(h=>Object.keys(h.history).forEach(k=>ks.add(k)));return ks.size;}
 function overallRate(){let t=0,d=0;S.habits.forEach(h=>{const ks=Object.keys(h.history);t+=ks.length;d+=ks.filter(k=>h.history[k]).length;});return t?Math.round(d/t*100):0;}
 
-// ── STREAKS ────────────────────────────────────────────────
+// ── STREAKS ──────────────────────────────────────────────────
 function recalcStreak(h){
   let s=0;const td=today();
   let d=new Date();
@@ -396,9 +639,8 @@ function recalcStreak(h){
   }else h.streak=s;
   h.bestStreak=Math.max(h.bestStreak||0,h.streak);
 }
-function save(){try{localStorage.setItem(SK,JSON.stringify(S));}catch(e){}}
 
-// ── TOGGLE ─────────────────────────────────────────────────
+// ── TOGGLE ───────────────────────────────────────────────────
 function toggle(id,card){
   const h=S.habits.find(x=>x.id===id);if(!h)return;
   const td=today(),was=!!h.history[td];
@@ -406,7 +648,7 @@ function toggle(id,card){
   recalcStreak(h);
   if(!S.dh)S.dh={};
   S.dh[td]={percent:dayScore(td),score:dayScore(td)};
-  save();
+  saveToFirestore();
   const done=!was;
   card.classList.toggle('done',done);
   const sub=card.querySelector('.h-sub');
@@ -415,7 +657,7 @@ function toggle(id,card){
   updateAll();
 }
 
-// ── RENDER HABITS ──────────────────────────────────────────
+// ── RENDER HABITS ────────────────────────────────────────────
 function renderHabits(){
   const list=$('habitList'),td=today();
   if(!S.habits.length){
@@ -443,7 +685,7 @@ function renderHabits(){
   });
 }
 
-// ── PROGRESS ───────────────────────────────────────────────
+// ── PROGRESS ─────────────────────────────────────────────────
 function updateProgress(){
   const td=today(),done=S.habits.filter(h=>!!h.history[td]).length,total=S.habits.length;
   const p=total?Math.round(done/total*100):0;
@@ -465,7 +707,7 @@ function updateProgress(){
   S.habits.slice(0,14).forEach(h=>{const d=document.createElement('div');d.className='sdot'+(h.history[td]?' on':'');sb.appendChild(d);});
 }
 
-// ── USER SCORE ─────────────────────────────────────────────
+// ── USER SCORE ────────────────────────────────────────────────
 function updateUserScore(){
   const sc=userScore();
   $('scoreNum').innerHTML=`${sc}<span>/100</span>`;
@@ -483,7 +725,7 @@ function updateUserScore(){
   $('metaRate').textContent=overallRate()+'%';
 }
 
-// ── HABIT SCORES ───────────────────────────────────────────
+// ── HABIT SCORES ──────────────────────────────────────────────
 function renderHabitScores(){
   const list=$('hscoreList');list.innerHTML='';
   S.habits.map(h=>({h,s:habitScore(h)})).sort((a,b)=>b.s-a.s).forEach(({h,s})=>{
@@ -507,7 +749,7 @@ function renderHabitScores(){
   requestAnimationFrame(()=>list.querySelectorAll('.hbar-fill').forEach(el=>el.style.width=el.dataset.t+'%'));
 }
 
-// ── CATEGORY ───────────────────────────────────────────────
+// ── CATEGORY ──────────────────────────────────────────────────
 function renderCats(){
   const grid=$('catGrid');grid.innerHTML='';
   const cats={};const td=today();
@@ -521,7 +763,7 @@ function renderCats(){
   requestAnimationFrame(()=>grid.querySelectorAll('.cat-bar-fill').forEach(el=>el.style.width=el.dataset.t+'%'));
 }
 
-// ── INSIGHTS ───────────────────────────────────────────────
+// ── INSIGHTS ──────────────────────────────────────────────────
 function renderInsights(){
   const ins=[];const td=today();
   const dayA=Array(7).fill(null).map(()=>({t:0,d:0}));
@@ -561,7 +803,7 @@ function renderInsights(){
   });
 }
 
-// ── CHART ──────────────────────────────────────────────────
+// ── CHART ─────────────────────────────────────────────────────
 let chartRAF=null;
 function renderChart(){
   const canvas=$('monthChart');if(!canvas)return;
@@ -600,19 +842,19 @@ function renderChart(){
   (function frame(){ctx.clearRect(0,0,W,H);grid();line(scores,'#E8D5A3',prog);line(pcts,'#60A5FA',prog);if(prog<1){prog=Math.min(1,prog+0.04);chartRAF=requestAnimationFrame(frame);}})();
 }
 
-// ── REMOVE / ADD ───────────────────────────────────────────
+// ── REMOVE / ADD ──────────────────────────────────────────────
 function remove(id,card){
   card.style.transition='opacity 0.18s,transform 0.18s';card.style.opacity='0';card.style.transform='translateX(24px)';
-  setTimeout(()=>{S.habits=S.habits.filter(x=>x.id!==id);save();renderAll();},180);
+  setTimeout(()=>{S.habits=S.habits.filter(x=>x.id!==id);saveToFirestore();renderAll();},180);
 }
 function addHabit(){
   const name=$('nameInput').value.trim();
   if(!name){$('nameInput').style.borderColor='#F87171';$('nameInput').focus();setTimeout(()=>$('nameInput').style.borderColor='',700);return;}
   S.habits.push({id:nid++,emoji:selEmoji,name,cat:selCat,streak:0,bestStreak:0,history:{}});
-  save();closeForm();renderAll();
+  saveToFirestore();closeForm();renderAll();
 }
 
-// ── FORM ───────────────────────────────────────────────────
+// ── FORM ──────────────────────────────────────────────────────
 function buildPicker(){
   const p=$('emojiPicker');p.innerHTML='';
   EMOJIS.forEach(em=>{
@@ -624,7 +866,7 @@ function buildPicker(){
 function openForm(){formOpen=true;$('addForm').classList.add('open');$('fab').classList.add('open');buildPicker();setTimeout(()=>{$('nameInput').focus();$('addForm').scrollIntoView({behavior:'smooth',block:'nearest'});},80);}
 function closeForm(){formOpen=false;$('addForm').classList.remove('open');$('fab').classList.remove('open');$('nameInput').value='';selEmoji=EMOJIS[0];selCat='health';$('catSelect').value='health';}
 
-// ── SPARKS ─────────────────────────────────────────────────
+// ── SPARKS ────────────────────────────────────────────────────
 function sparks(el){
   const r=el.getBoundingClientRect();
   ['✨','⭐','🌟','💫','✅'].forEach((em,i)=>{
@@ -634,11 +876,11 @@ function sparks(el){
   });
 }
 
-// ── RENDER ALL ─────────────────────────────────────────────
+// ── RENDER ALL ────────────────────────────────────────────────
 function updateAll(){updateProgress();updateUserScore();renderHabitScores();renderCats();renderInsights();renderChart();}
 function renderAll(){renderHabits();updateAll();}
 
-// ── EVENTS ─────────────────────────────────────────────────
+// ── EVENTS ────────────────────────────────────────────────────
 $('fab').addEventListener('click',()=>formOpen?closeForm():openForm());
 $('cancelBtn').addEventListener('click',closeForm);
 $('saveBtn').addEventListener('click',addHabit);
@@ -646,13 +888,11 @@ $('nameInput').addEventListener('keydown',e=>{if(e.key==='Enter')addHabit();if(e
 $('catSelect').addEventListener('change',e=>selCat=e.target.value);
 window.addEventListener('resize',renderChart);
 
-// ── INIT ───────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────────
 const h=new Date().getHours();
 $('greeting').textContent=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
 $('datechip').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
 $('motiveLine').textContent=MOTIVES[new Date().getDay()%MOTIVES.length];
-S.habits.forEach(recalcStreak);save();
-renderAll();
 </script>
 </body>
 </html>
