@@ -9,7 +9,7 @@
 <title>My Habits · PRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg:#0F0F0F;--bg2:#1A1A1A;--bg3:#222222;--card:#181818;
   --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
   --text:#F0EDE8;--text2:#888580;--text3:#555250;
@@ -23,54 +23,44 @@
 html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;}
 
 /* ── AUTH SCREEN ── */
-#authScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:32px 24px;background:var(--bg);}
-.auth-logo{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:6px;}
-.auth-sub{font-size:13px;color:var(--text2);margin-bottom:40px;font-style:italic;}
-.auth-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:28px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;}
+#authScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px;max-width:430px;margin:0 auto;}
+.auth-logo{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:8px;}
+.auth-sub{font-size:13px;color:var(--text2);font-style:italic;margin-bottom:40px;text-align:center;}
+.auth-card{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px;}
 .auth-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:2px;}
-.auth-desc{font-size:12px;color:var(--text2);margin-bottom:6px;line-height:1.5;}
-.auth-input{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;font-family:'Instrument Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;width:100%;}
+.auth-tabs{display:flex;gap:0;background:var(--bg3);border-radius:var(--r-sm);padding:3px;margin-bottom:4px;}
+.auth-tab{flex:1;padding:8px;text-align:center;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;color:var(--text2);transition:all 0.2s;}
+.auth-tab.active{background:var(--card);color:var(--text);border:1px solid var(--border2);}
+.auth-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;font-family:'Instrument Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;}
 .auth-input:focus{border-color:var(--accent2);}
 .auth-input::placeholder{color:var(--text3);}
-.btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--bg3);font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;transition:background 0.2s,border-color 0.2s;}
-.btn-google:hover{background:var(--bg2);border-color:var(--accent2);}
-.btn-google svg{width:18px;height:18px;flex-shrink:0;}
-.btn-email{width:100%;padding:13px;border-radius:var(--r-sm);border:none;background:var(--accent);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#0F0F0F;cursor:pointer;transition:opacity 0.15s,transform 0.15s;}
-.btn-email:active{opacity:0.85;transform:scale(0.98);}
-.auth-divider{display:flex;align-items:center;gap:10px;color:var(--text3);font-size:11px;}
-.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
-.auth-toggle{text-align:center;font-size:12px;color:var(--text2);}
-.auth-toggle span{color:var(--accent);cursor:pointer;font-weight:600;}
+.auth-btn{width:100%;padding:13px;border-radius:var(--r-sm);border:none;background:var(--accent);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#0F0F0F;cursor:pointer;transition:opacity 0.2s,transform 0.15s;letter-spacing:0.2px;}
+.auth-btn:active{opacity:0.85;transform:scale(0.98);}
+.auth-btn:disabled{opacity:0.5;cursor:not-allowed;}
 .auth-err{font-size:12px;color:var(--red);text-align:center;min-height:16px;}
-.auth-loading{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--text2);}
-.spin{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.6s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
+.auth-note{font-size:11px;color:var(--text3);text-align:center;line-height:1.6;}
+.divider{display:flex;align-items:center;gap:10px;color:var(--text3);font-size:11px;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.guest-btn{width:100%;padding:11px;border-radius:var(--r-sm);border:1px solid var(--border2);background:transparent;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:background 0.2s;}
+.guest-btn:active{background:var(--bg3);}
+
+/* ── SYNC BADGE ── */
+.sync-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:3px 9px;border-radius:100px;border:1px solid;transition:all 0.3s;cursor:pointer;}
+.sync-online{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.3);color:var(--green);}
+.sync-offline{background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3);color:var(--amber);}
+.sync-guest{background:rgba(136,133,128,0.1);border-color:var(--text3);color:var(--text2);}
+.sync-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
 
 /* ── APP ── */
 .app{max-width:430px;margin:0 auto;min-height:100vh;padding-bottom:130px;display:none;}
-
-/* HEADER */
 .header{padding:52px 20px 16px;position:sticky;top:0;z-index:50;background:linear-gradient(to bottom,#0F0F0F 82%,transparent);}
 .header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
 .header-left h1{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;}
 .header-left .sub{font-size:13px;color:var(--text2);margin-top:5px;font-style:italic;}
-.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
 .date-chip{background:var(--bg3);border:1px solid var(--border2);border-radius:100px;padding:6px 12px;font-size:11px;font-weight:600;color:var(--text2);white-space:nowrap;}
-.user-chip{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:5px 10px 5px 6px;cursor:pointer;transition:border-color 0.2s;}
-.user-chip:hover{border-color:var(--accent2);}
-.user-av{width:20px;height:20px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0F0F0F;overflow:hidden;flex-shrink:0;}
-.user-av img{width:100%;height:100%;object-fit:cover;}
-.user-name{font-size:11px;font-weight:600;color:var(--text2);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.logout-icon{width:12px;height:12px;stroke:var(--text3);stroke-width:2;stroke-linecap:round;}
 
-/* SYNC INDICATOR */
-.sync-bar{position:fixed;top:0;left:50%;transform:translateX(-50%);background:var(--bg3);border:1px solid var(--border);border-radius:0 0 10px 10px;padding:4px 14px;font-size:10px;font-weight:600;color:var(--text2);z-index:200;display:flex;align-items:center;gap:6px;transition:opacity 0.3s;opacity:0;pointer-events:none;}
-.sync-bar.show{opacity:1;}
-.sync-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
-.sync-dot.saving{background:var(--amber);animation:pulse 0.8s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-
-/* USER SCORE HERO */
+/* SCORE HERO */
 .score-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;position:relative;overflow:hidden;}
 .score-hero::before{content:'';position:absolute;top:-50px;right:-50px;width:160px;height:160px;background:radial-gradient(circle,rgba(232,213,163,0.07) 0%,transparent 70%);pointer-events:none;}
 .score-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
@@ -92,7 +82,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
 .smeta-val{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;}
 .smeta-key{font-size:10px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px;}
 
-/* PROGRESS CARD */
+/* PROGRESS */
 .progress-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;}
 .ring-container{position:relative;width:72px;height:72px;}
 .ring-container svg{transform:rotate(-90deg);width:72px;height:72px;}
@@ -220,52 +210,44 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
 /* SPARKS */
 .spark{position:fixed;pointer-events:none;font-size:20px;z-index:9999;animation:spark 0.75s cubic-bezier(0.4,0,0.2,1) forwards;}
 @keyframes spark{0%{opacity:1;transform:scale(0.5) translateY(0);}60%{opacity:1;transform:scale(1.3) translateY(-50px);}100%{opacity:0;transform:scale(0.8) translateY(-90px);}}
+
+/* LOADING */
+#loadingScreen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;flex-direction:column;gap:12px;}
+.load-logo{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;}
+.load-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:loadPulse 1.2s ease-in-out infinite;}
+@keyframes loadPulse{0%,100%{opacity:0.2;}50%{opacity:1;}}
 ::-webkit-scrollbar{width:0;}
 </style>
 </head>
 <body>
 
-<!-- ── SYNC BAR ── -->
-<div class="sync-bar" id="syncBar">
-  <div class="sync-dot" id="syncDot"></div>
-  <span id="syncTxt">Synced</span>
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="load-logo">My Habits ✦</div>
+  <div class="load-dot"></div>
 </div>
 
-<!-- ── AUTH SCREEN ── -->
-<div id="authScreen">
-  <div class="auth-logo">My Habits · PRO</div>
-  <div class="auth-sub">Your personal habit OS</div>
+<!-- AUTH SCREEN -->
+<div id="authScreen" style="display:none;">
+  <div class="auth-logo">My Habits ✦</div>
+  <div class="auth-sub">Track habits across all your devices</div>
   <div class="auth-card">
-    <div class="auth-title" id="authTitle">Welcome back</div>
-    <div class="auth-desc" id="authDesc">Sign in to sync your habits across all devices.</div>
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</div>
+      <div class="auth-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</div>
+    </div>
+    <input class="auth-input" id="authEmail" type="email" placeholder="Email address" autocomplete="email"/>
+    <input class="auth-input" id="authPass"  type="password" placeholder="Password (min 6 chars)" autocomplete="current-password"/>
     <div class="auth-err" id="authErr"></div>
-
-    <!-- Google -->
-    <button class="btn-google" id="googleBtn">
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#4285F4" d="M46.098 24.55c0-1.636-.146-3.2-.418-4.698H24v8.88h12.39c-.534 2.876-2.16 5.314-4.61 6.952v5.78h7.466c4.37-4.024 6.852-9.952 6.852-16.914z"/>
-        <path fill="#34A853" d="M24 47.5c6.26 0 11.508-2.074 15.344-5.624l-7.466-5.78c-2.074 1.39-4.726 2.21-7.878 2.21-6.054 0-11.182-4.09-13.014-9.584H3.244v5.966C7.064 42.28 15.016 47.5 24 47.5z"/>
-        <path fill="#FBBC05" d="M10.986 28.722a14.47 14.47 0 0 1-.754-4.604c0-1.598.274-3.15.754-4.604v-5.966H3.244A23.914 23.914 0 0 0 .5 24.118c0 3.884.928 7.558 2.744 10.57l7.742-5.966z"/>
-        <path fill="#EA4335" d="M24 9.95c3.414 0 6.474 1.174 8.884 3.48l6.66-6.66C35.496 3.056 30.26.5 24 .5 15.016.5 7.064 5.72 3.244 13.548l7.742 5.966C12.818 14.04 17.946 9.95 24 9.95z"/>
-      </svg>
-      Continue with Google
-    </button>
-
-    <div class="auth-divider">or</div>
-
-    <!-- Email fields (hidden until toggle) -->
-    <input class="auth-input" id="emailInput" type="email" placeholder="Email address" autocomplete="email"/>
-    <input class="auth-input" id="passInput" type="password" placeholder="Password" autocomplete="current-password"/>
-    <button class="btn-email" id="emailBtn">Sign In</button>
-    <div class="auth-toggle" id="authToggle">Don't have an account? <span id="toggleSpan">Create one</span></div>
-  </div>
-  <div style="margin-top:20px;font-size:11px;color:var(--text3);text-align:center;">
-    ⚡ Firebase-powered · Real-time sync · Multi-device
+    <button class="auth-btn" id="authBtn" onclick="doAuth()">Sign In</button>
+    <div class="divider">or</div>
+    <button class="guest-btn" onclick="doGuest()">Continue as Guest</button>
+    <div class="auth-note">Guest mode saves data on this device only.<br>Sign up for cross-device sync — it's free.</div>
   </div>
 </div>
 
-<!-- ── MAIN APP ── -->
-<div class="app" id="appScreen">
+<!-- MAIN APP -->
+<div class="app" id="mainApp">
 
   <div class="header">
     <div class="header-row">
@@ -273,15 +255,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
         <h1 id="greeting">Good morning</h1>
         <div class="sub" id="motiveLine">Build the life you want.</div>
       </div>
-      <div class="header-right">
+      <div class="hdr-right">
         <div class="date-chip" id="datechip"></div>
-        <div class="user-chip" id="userChip" title="Sign out">
-          <div class="user-av" id="userAv"></div>
-          <span class="user-name" id="userName"></span>
-          <svg class="logout-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.5 1.5H2.5C2 1.5 1.5 2 1.5 2.5V9.5C1.5 10 2 10.5 2.5 10.5H4.5" stroke-linecap="round"/>
-            <path d="M8 4L10.5 6L8 8M10.5 6H4.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <div class="sync-badge sync-guest" id="syncBadge" onclick="handleSyncClick()" title="Sync status">
+          <div class="sync-dot"></div>
+          <span id="syncLabel">Guest</span>
         </div>
       </div>
     </div>
@@ -322,7 +300,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
       </div>
       <div>
         <div class="prog-status" id="progStatus">Let's begin 🌅</div>
-        <div class="prog-detail" id="progDetail">0 of 14 habits done</div>
+        <div class="prog-detail" id="progDetail">0 of 0 habits done</div>
         <div class="mini-bg"><div class="mini-fill" id="miniBar"></div></div>
         <div class="streak-bar" id="streakBar"></div>
       </div>
@@ -359,13 +337,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
     <div class="cat-grid" id="catGrid"></div>
   </div>
 
-  <!-- MONTHLY CHART -->
+  <!-- CHART -->
   <div class="section">
     <div class="sec-hd"><div class="sec-title">Monthly Trend</div></div>
     <div class="chart-wrap">
-      <div class="chart-c" id="chartWrap">
-        <canvas id="monthChart"></canvas>
-      </div>
+      <div class="chart-c" id="chartWrap"><canvas id="monthChart"></canvas></div>
       <div class="chart-legend">
         <div class="leg-item"><div class="leg-dot" style="background:#E8D5A3"></div>Daily Score</div>
         <div class="leg-item"><div class="leg-dot" style="background:#60A5FA"></div>Completion %</div>
@@ -399,208 +375,81 @@ html,body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',s
   </button>
 </div>
 
-<!-- ── FIREBASE ── -->
+<!-- Firebase SDKs -->
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js';
-import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js';
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import{getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signInAnonymously,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import{getFirestore,doc,getDoc,setDoc,onSnapshot}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-// ── FIREBASE CONFIG ─────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// FIREBASE CONFIG
+// HOW TO SET UP (free, 5 min):
+// 1. Go to https://console.firebase.google.com
+// 2. Create a project → Add Web App → copy config below
+// 3. Enable Authentication → Email/Password + Anonymous
+// 4. Enable Firestore → Start in test mode
+// Then replace the firebaseConfig object with your own values.
+// ─────────────────────────────────────────────────────────────
 const firebaseConfig = {
-  apiKey: "AIzaSyAsP9YWKZbiw7a19r-jo0Uw90yKhbV8bDQ",
-  authDomain: "habits-tracker-dcff9.firebaseapp.com",
-  projectId: "habits-tracker-dcff9",
-  storageBucket: "habits-tracker-dcff9.firebasestorage.app",
-  messagingSenderId: "397901830925",
-  appId: "1:397901830925:web:94b6de3591ed316efbae44",
-  measurementId: "G-CW65HFZ118"
+  apiKey:            "PASTE_YOUR_API_KEY_HERE",
+  authDomain:        "PASTE_YOUR_AUTH_DOMAIN_HERE",
+  projectId:         "PASTE_YOUR_PROJECT_ID_HERE",
+  storageBucket:     "PASTE_YOUR_STORAGE_BUCKET_HERE",
+  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID_HERE",
+  appId:             "PASTE_YOUR_APP_ID_HERE"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+// ─────────────────────────────────────────────────────────────
+// DETECT IF FIREBASE IS CONFIGURED
+// Until you add your own config, the app runs in Guest mode
+// automatically (localStorage only) so it still works.
+// ─────────────────────────────────────────────────────────────
+const FB_CONFIGURED = firebaseConfig.apiKey !== "PASTE_YOUR_API_KEY_HERE";
 
-// ── CONSTANTS ───────────────────────────────────────────────
+let app, auth, db;
+if(FB_CONFIGURED){
+  app  = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db   = getFirestore(app);
+}
+
+// ─────────────────────────────────────────────────────────────
+// CONSTANTS
+// ─────────────────────────────────────────────────────────────
 const EMOJIS=['✍️','👟','💤','🧘','⏰','✨','🏋️','🏢','💧','💸','📖','📵','🚫','🤸','🎯','🥗','💪','🎨','🎸','🌿','☀️','🚿'];
 const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const CAT_COLOR={health:'#4ADE80',mind:'#A78BFA',productivity:'#60A5FA',finance:'#FBBF24',custom:'#888580'};
 const CAT_LBL={health:'Health',mind:'Mind',productivity:'Productivity',finance:'Finance',custom:'Custom'};
 const MOTIVES=['Build the life you want, one habit at a time.','Small steps lead to big changes.','Consistency beats perfection.','You are what you repeatedly do.','Progress, not perfection.'];
-const DEF=[
-  {id:1,emoji:'✍️',name:'Journal',cat:'mind'},
-  {id:2,emoji:'👟',name:'Running',cat:'health'},
-  {id:3,emoji:'💤',name:'8 hrs of sleep',cat:'health'},
-  {id:4,emoji:'🧘',name:'Meditation',cat:'mind'},
-  {id:5,emoji:'⏰',name:'Wake up early',cat:'productivity'},
-  {id:6,emoji:'✨',name:'Skincare',cat:'health'},
-  {id:7,emoji:'🏋️',name:'Gym workout',cat:'health'},
-  {id:8,emoji:'🏢',name:'Office work',cat:'productivity'},
-  {id:9,emoji:'💧',name:'Drink 3L water',cat:'health'},
-  {id:10,emoji:'💸',name:'Track expenses',cat:'finance'},
-  {id:11,emoji:'📖',name:'Read 10 pages',cat:'mind'},
-  {id:12,emoji:'📵',name:'Limit screen time',cat:'productivity'},
-  {id:13,emoji:'🚫',name:'No snooze',cat:'productivity'},
-  {id:14,emoji:'🤸',name:'Stretching',cat:'health'},
-];
+const LS_KEY='habitpro_guest_v4';
+const C=2*Math.PI*32;
 
-// ── STATE ───────────────────────────────────────────────────
-let S = { habits: [], dh: {} };
-let nid = 15;
-let formOpen = false, selEmoji = EMOJIS[0], selCat = 'health';
-let currentUser = null;
-let unsubFirestore = null;
-let syncTimer = null;
-let isSignUp = false;
-const $ = id => document.getElementById(id);
-const C = 2 * Math.PI * 32;
+// ─────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────
+// habits always starts EMPTY — user adds their own
+let S={habits:[],dh:{}};
+let nid=1;
+let formOpen=false,selEmoji=EMOJIS[0],selCat='health';
+let currentUser=null,isGuest=true,unsubFS=null;
+let authMode='login';
+let chartRAF=null,saveTimer=null;
 
-// ── DATE HELPERS ────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+
+// ─────────────────────────────────────────────────────────────
+// DATE
+// ─────────────────────────────────────────────────────────────
 function dk(ago=0){const d=new Date();d.setDate(d.getDate()-ago);return d.toISOString().slice(0,10);}
 const today=()=>dk(0);
 const k7=()=>Array.from({length:7},(_,i)=>dk(6-i));
 const k30=()=>Array.from({length:30},(_,i)=>dk(29-i));
 
-// ── SYNC UI ─────────────────────────────────────────────────
-function showSync(saving=false){
-  const bar=$('syncBar'),dot=$('syncDot'),txt=$('syncTxt');
-  dot.className='sync-dot'+(saving?' saving':'');
-  txt.textContent=saving?'Saving…':'Synced ✓';
-  bar.classList.add('show');
-  clearTimeout(syncTimer);
-  if(!saving)syncTimer=setTimeout(()=>bar.classList.remove('show'),1800);
-}
-
-// ── FIRESTORE ───────────────────────────────────────────────
-function userDoc(uid){return doc(db,'users',uid);}
-
-async function loadUserData(uid){
-  try{
-    const snap=await getDoc(userDoc(uid));
-    if(snap.exists()){
-      const d=snap.data();
-      S={habits:(d.habits||[]).map(h=>({streak:0,bestStreak:0,history:{},cat:'custom',...h})),dh:d.dh||{}};
-      nid=Math.max(...S.habits.map(h=>h.id),14)+1;
-    }else{
-      S={habits:DEF.map(makeHabit),dh:{}};
-      nid=15;
-      await saveToFirestore();
-    }
-    S.habits.forEach(recalcStreak);
-    renderAll();
-  }catch(e){console.error('Load error',e);}
-}
-
-async function saveToFirestore(){
-  if(!currentUser)return;
-  showSync(true);
-  try{
-    await setDoc(userDoc(currentUser.uid),{habits:S.habits,dh:S.dh||{}},{merge:false});
-    showSync(false);
-  }catch(e){console.error('Save error',e);}
-}
-
-function subscribeRealtime(uid){
-  if(unsubFirestore)unsubFirestore();
-  unsubFirestore=onSnapshot(userDoc(uid),snap=>{
-    if(snap.exists()&&snap.metadata.hasPendingWrites===false){
-      // only update from remote if no local pending writes
-    }
-  });
-}
-
-function makeHabit(d){return{id:d.id,emoji:d.emoji,name:d.name,cat:d.cat||'custom',streak:0,bestStreak:0,history:{}};}
-
-// ── AUTH STATE ──────────────────────────────────────────────
-onAuthStateChanged(auth, async user=>{
-  if(user){
-    currentUser=user;
-    showApp(user);
-    await loadUserData(user.uid);
-    subscribeRealtime(user.uid);
-  }else{
-    currentUser=null;
-    if(unsubFirestore){unsubFirestore();unsubFirestore=null;}
-    showAuth();
-  }
-});
-
-function showApp(user){
-  $('authScreen').style.display='none';
-  $('appScreen').style.display='block';
-  $('fabWrap').style.display='block';
-  // User chip
-  const name=user.displayName||user.email||'User';
-  $('userName').textContent=name.split(' ')[0];
-  const av=$('userAv');
-  if(user.photoURL){av.innerHTML=`<img src="${user.photoURL}" alt="">`;}
-  else{av.textContent=name[0].toUpperCase();}
-}
-
-function showAuth(){
-  $('authScreen').style.display='flex';
-  $('appScreen').style.display='none';
-  $('fabWrap').style.display='none';
-  S={habits:[],dh:{}};
-}
-
-// ── GOOGLE SIGN IN ───────────────────────────────────────────
-$('googleBtn').addEventListener('click',async()=>{
-  setAuthErr('');
-  const provider=new GoogleAuthProvider();
-  try{await signInWithPopup(auth,provider);}
-  catch(e){setAuthErr(friendlyError(e));}
-});
-
-// ── EMAIL SIGN IN / UP ───────────────────────────────────────
-$('emailBtn').addEventListener('click',async()=>{
-  setAuthErr('');
-  const email=$('emailInput').value.trim();
-  const pass=$('passInput').value;
-  if(!email||!pass){setAuthErr('Please enter email and password.');return;}
-  try{
-    if(isSignUp)await createUserWithEmailAndPassword(auth,email,pass);
-    else await signInWithEmailAndPassword(auth,email,pass);
-  }catch(e){setAuthErr(friendlyError(e));}
-});
-
-$('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('passInput').focus();});
-$('passInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('emailBtn').click();});
-
-$('toggleSpan').addEventListener('click',()=>{
-  isSignUp=!isSignUp;
-  $('authTitle').textContent=isSignUp?'Create account':'Welcome back';
-  $('authDesc').textContent=isSignUp?'Sign up to start tracking your habits.':'Sign in to sync your habits across all devices.';
-  $('emailBtn').textContent=isSignUp?'Create Account':'Sign In';
-  $('toggleSpan').textContent=isSignUp?'Sign in instead':'Create one';
-  setAuthErr('');
-});
-
-function setAuthErr(msg){$('authErr').textContent=msg;}
-function friendlyError(e){
-  const m={
-    'auth/invalid-email':'Invalid email address.',
-    'auth/user-not-found':'No account found with that email.',
-    'auth/wrong-password':'Incorrect password.',
-    'auth/email-already-in-use':'Email already in use. Try signing in.',
-    'auth/weak-password':'Password must be at least 6 characters.',
-    'auth/popup-closed-by-user':'Sign-in cancelled.',
-    'auth/network-request-failed':'Network error. Check your connection.',
-    'auth/invalid-credential':'Invalid email or password.',
-  };
-  return m[e.code]||e.message||'Something went wrong.';
-}
-
-// ── LOGOUT ───────────────────────────────────────────────────
-$('userChip').addEventListener('click',async()=>{
-  if(confirm('Sign out?')){
-    closeForm();
-    await signOut(auth);
-  }
-});
-
-// ── SCORING ─────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// SCORING
+// ─────────────────────────────────────────────────────────────
 function habitScore(h){
-  const all=Object.keys(h.history);
+  const all=Object.keys(h.history||{});
   if(!all.length)return 0;
   const cons=k7().filter(k=>h.history[k]).length/7;
   const cr=all.filter(k=>h.history[k]).length/all.length;
@@ -609,7 +458,7 @@ function habitScore(h){
 }
 function dayScore(k){
   const t=S.habits.length;if(!t)return 0;
-  return Math.round(S.habits.filter(h=>h.history[k]).length/t*100);
+  return Math.round(S.habits.filter(h=>h.history&&h.history[k]).length/t*100);
 }
 function userScore(){
   const d7=k7().map(k=>dayScore(k));
@@ -617,37 +466,201 @@ function userScore(){
   const ha=S.habits.length?S.habits.reduce((a,h)=>a+habitScore(h),0)/S.habits.length:0;
   return Math.min(100,Math.round(avg7*0.5+ha*0.5));
 }
-function bestStreakAll(){return S.habits.reduce((m,h)=>Math.max(m,h.bestStreak,h.streak),0);}
-function daysTracked(){const ks=new Set();S.habits.forEach(h=>Object.keys(h.history).forEach(k=>ks.add(k)));return ks.size;}
-function overallRate(){let t=0,d=0;S.habits.forEach(h=>{const ks=Object.keys(h.history);t+=ks.length;d+=ks.filter(k=>h.history[k]).length;});return t?Math.round(d/t*100):0;}
+function bestStreakAll(){return S.habits.reduce((m,h)=>Math.max(m,h.bestStreak||0,h.streak||0),0);}
+function daysTracked(){const ks=new Set();S.habits.forEach(h=>Object.keys(h.history||{}).forEach(k=>ks.add(k)));return ks.size;}
+function overallRate(){let t=0,d=0;S.habits.forEach(h=>{const ks=Object.keys(h.history||{});t+=ks.length;d+=ks.filter(k=>h.history[k]).length;});return t?Math.round(d/t*100):0;}
 
-// ── STREAKS ──────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// STREAKS
+// ─────────────────────────────────────────────────────────────
 function recalcStreak(h){
-  let s=0;const td=today();
-  let d=new Date();
-  while(true){
-    const k=d.toISOString().slice(0,10);
-    if(h.history[k]){s++;d.setDate(d.getDate()-1);}
-    else if(k===td){d.setDate(d.getDate()-1);break;}
-    else break;
-  }
-  if(h.history[td]){
-    let s2=0;const d2=new Date();
-    while(true){const k=d2.toISOString().slice(0,10);if(h.history[k]){s2++;d2.setDate(d2.getDate()-1);}else break;}
-    h.streak=s2;
-  }else h.streak=s;
+  h.history=h.history||{};
+  const td=today();let s=0,d2=new Date();
+  while(true){const k=d2.toISOString().slice(0,10);if(h.history[k]){s++;d2.setDate(d2.getDate()-1);}else if(k===td){d2.setDate(d2.getDate()-1);break;}else break;}
+  if(h.history[td]){let s2=0;const d3=new Date();while(true){const k=d3.toISOString().slice(0,10);if(h.history[k]){s2++;d3.setDate(d3.getDate()-1);}else break;}h.streak=s2;}
+  else h.streak=s;
   h.bestStreak=Math.max(h.bestStreak||0,h.streak);
 }
 
-// ── TOGGLE ───────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// PERSISTENCE
+// ─────────────────────────────────────────────────────────────
+function toFirestore(state){
+  // Firestore can't store nested objects with dots in keys well — encode dates
+  const habits=state.habits.map(h=>({...h,history:JSON.stringify(h.history||{})}));
+  return{habits,dh:JSON.stringify(state.dh||{})};
+}
+function fromFirestore(data){
+  const habits=(data.habits||[]).map(h=>({...h,history:JSON.parse(h.history||'{}')}));
+  return{habits,dh:JSON.parse(data.dh||'{}')};
+}
+
+async function saveCloud(){
+  if(!FB_CONFIGURED||isGuest||!currentUser)return;
+  try{
+    await setDoc(doc(db,'users',currentUser.uid),toFirestore(S));
+    setSyncBadge('online');
+  }catch(e){setSyncBadge('offline');}
+}
+
+function saveLocal(){
+  try{localStorage.setItem(LS_KEY,JSON.stringify(S));}catch(e){}
+}
+
+function save(){
+  saveLocal();
+  // debounce cloud saves to avoid hammering on every toggle
+  if(!FB_CONFIGURED||isGuest)return;
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(saveCloud,800);
+}
+
+function loadLocal(){
+  try{
+    const r=localStorage.getItem(LS_KEY);
+    if(r){
+      const s=JSON.parse(r);
+      // migrate old habits that don't have history field
+      s.habits=(s.habits||[]).map(h=>({streak:0,bestStreak:0,history:{},cat:'custom',...h}));
+      s.dh=s.dh||{};
+      return s;
+    }
+  }catch(e){}
+  // brand new user — empty state, NOT pre-filled with 14 habits
+  return{habits:[],dh:{}};
+}
+
+// ─────────────────────────────────────────────────────────────
+// AUTH UI
+// ─────────────────────────────────────────────────────────────
+function switchTab(mode){
+  authMode=mode;
+  $('tabLogin').classList.toggle('active',mode==='login');
+  $('tabSignup').classList.toggle('active',mode==='signup');
+  $('authBtn').textContent=mode==='login'?'Sign In':'Create Account';
+  $('authErr').textContent='';
+}
+
+async function doAuth(){
+  if(!FB_CONFIGURED){alert('Firebase not configured yet.\nSee the comments in the HTML file for setup instructions.\n\nUsing guest mode instead.');doGuest();return;}
+  const email=$('authEmail').value.trim();
+  const pass=$('authPass').value;
+  if(!email||!pass){$('authErr').textContent='Please enter email and password.';return;}
+  $('authBtn').disabled=true;$('authErr').textContent='';
+  try{
+    if(authMode==='login') await signInWithEmailAndPassword(auth,email,pass);
+    else await createUserWithEmailAndPassword(auth,email,pass);
+  }catch(e){
+    const msgs={'auth/user-not-found':'No account found. Sign up first.','auth/wrong-password':'Wrong password.','auth/email-already-in-use':'Email already in use. Sign in instead.','auth/invalid-email':'Invalid email address.','auth/weak-password':'Password must be at least 6 characters.'};
+    $('authErr').textContent=msgs[e.code]||e.message;
+  }finally{$('authBtn').disabled=false;}
+}
+
+async function doGuest(){
+  if(FB_CONFIGURED){
+    try{await signInAnonymously(auth);}catch(e){bootGuestLocal();}
+  }else{bootGuestLocal();}
+}
+
+function bootGuestLocal(){
+  isGuest=true;currentUser=null;
+  S=loadLocal();
+  S.habits.forEach(recalcStreak);
+  nid=Math.max(...S.habits.map(h=>h.id),0)+1;
+  showApp();
+  setSyncBadge('guest');
+}
+
+// ─────────────────────────────────────────────────────────────
+// SYNC BADGE
+// ─────────────────────────────────────────────────────────────
+function setSyncBadge(state){
+  const b=$('syncBadge'),l=$('syncLabel');
+  b.className='sync-badge sync-'+state;
+  l.textContent=state==='online'?'Synced':state==='offline'?'Offline':'Guest';
+}
+function handleSyncClick(){
+  if(isGuest){if(confirm('Sign out of guest mode and go to sign in?')){location.reload();}}
+  else{if(confirm('Sign out?')){if(FB_CONFIGURED)signOut(auth).then(()=>location.reload());else location.reload();}}
+}
+
+// ─────────────────────────────────────────────────────────────
+// SHOW APP
+// ─────────────────────────────────────────────────────────────
+function showApp(){
+  $('loadingScreen').style.display='none';
+  $('authScreen').style.display='none';
+  $('mainApp').style.display='block';
+  $('fabWrap').style.display='block';
+  const h=new Date().getHours();
+  $('greeting').textContent=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+  $('datechip').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+  $('motiveLine').textContent=MOTIVES[new Date().getDay()%MOTIVES.length];
+  renderAll();
+}
+
+// ─────────────────────────────────────────────────────────────
+// FIREBASE AUTH STATE
+// ─────────────────────────────────────────────────────────────
+if(FB_CONFIGURED){
+  onAuthStateChanged(auth,async user=>{
+    if(user){
+      currentUser=user;
+      isGuest=user.isAnonymous;
+      // load from Firestore
+      try{
+        const snap=await getDoc(doc(db,'users',user.uid));
+        if(snap.exists()){S=fromFirestore(snap.data());}
+        else{
+          // new cloud user — start empty
+          S=loadLocal(); // carry over any guest data
+          await setDoc(doc(db,'users',user.uid),toFirestore(S));
+        }
+        S.habits.forEach(recalcStreak);
+        nid=Math.max(...S.habits.map(h=>h.id),0)+1;
+        showApp();
+        setSyncBadge(isGuest?'guest':'online');
+        // listen for real-time updates (multi-device sync)
+        if(!isGuest&&unsubFS===null){
+          unsubFS=onSnapshot(doc(db,'users',user.uid),snap=>{
+            if(snap.exists()){
+              const fresh=fromFirestore(snap.data());
+              fresh.habits.forEach(recalcStreak);
+              S=fresh;
+              nid=Math.max(...S.habits.map(h=>h.id),0)+1;
+              renderAll();
+              setSyncBadge('online');
+            }
+          },()=>setSyncBadge('offline'));
+        }
+      }catch(e){
+        // Firestore unavailable — fall back to local
+        S=loadLocal();S.habits.forEach(recalcStreak);
+        nid=Math.max(...S.habits.map(h=>h.id),0)+1;
+        showApp();setSyncBadge('offline');
+      }
+    }else{
+      // not signed in — show auth screen
+      if(unsubFS){unsubFS();unsubFS=null;}
+      $('loadingScreen').style.display='none';
+      $('authScreen').style.display='flex';
+    }
+  });
+}else{
+  // Firebase not configured — skip auth, go straight to guest
+  setTimeout(bootGuestLocal,600);
+}
+
+// ─────────────────────────────────────────────────────────────
+// TOGGLE
+// ─────────────────────────────────────────────────────────────
 function toggle(id,card){
   const h=S.habits.find(x=>x.id===id);if(!h)return;
   const td=today(),was=!!h.history[td];
   h.history[td]=!was;
   recalcStreak(h);
-  if(!S.dh)S.dh={};
   S.dh[td]={percent:dayScore(td),score:dayScore(td)};
-  saveToFirestore();
+  save();
   const done=!was;
   card.classList.toggle('done',done);
   const sub=card.querySelector('.h-sub');
@@ -656,16 +669,18 @@ function toggle(id,card){
   updateAll();
 }
 
-// ── RENDER HABITS ────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// RENDER HABITS
+// ─────────────────────────────────────────────────────────────
 function renderHabits(){
   const list=$('habitList'),td=today();
   if(!S.habits.length){
-    list.innerHTML=`<div class="empty"><span class="empty-icon">🚀</span><div class="empty-title">Start building your habits</div><div class="empty-sub">Tap the button below to add<br>your first habit for today</div></div>`;
+    list.innerHTML=`<div class="empty"><span class="empty-icon">🚀</span><div class="empty-title">Start building your habits</div><div class="empty-sub">Tap "Add New Habit" below to add<br>your first habit for today</div></div>`;
     return;
   }
   list.innerHTML='';
   S.habits.forEach((h,i)=>{
-    const done=!!h.history[td];
+    const done=!!(h.history&&h.history[td]);
     const card=document.createElement('div');
     card.className='habit-card'+(done?' done':'');
     card.style.animationDelay=(i*25)+'ms';
@@ -679,34 +694,45 @@ function renderHabits(){
       <div class="check-c"><svg viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9.5 10.5,2.5"/></svg></div>
       <button class="del-btn" tabindex="-1"><svg viewBox="0 0 10 10" fill="none"><line x1="1" y1="1" x2="9" y2="9"/><line x1="9" y1="1" x2="1" y2="9"/></svg></button>`;
     card.addEventListener('click',e=>{if(e.target.closest('.del-btn'))return;toggle(h.id,card);});
-    card.querySelector('.del-btn').addEventListener('click',e=>{e.stopPropagation();remove(h.id,card);});
+    card.querySelector('.del-btn').addEventListener('click',e=>{e.stopPropagation();removeHabit(h.id,card);});
     list.appendChild(card);
   });
 }
 
-// ── PROGRESS ─────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// PROGRESS — fixed: always uses actual S.habits.length
+// ─────────────────────────────────────────────────────────────
 function updateProgress(){
-  const td=today(),done=S.habits.filter(h=>!!h.history[td]).length,total=S.habits.length;
+  const td=today();
+  const total=S.habits.length;
+  const done=S.habits.filter(h=>!!(h.history&&h.history[td])).length;
   const p=total?Math.round(done/total*100):0;
   $('ringProg').style.strokeDashoffset=C-(p/100)*C;
   $('ringProg').style.strokeDasharray=C;
   $('ringPct').textContent=p+'%';
   $('miniBar').style.width=p+'%';
-  $('countPill').textContent=total;
+  $('countPill').textContent=total;  // live count, always correct
   $('ringProg').style.stroke=p===100?'#4ADE80':p>=50?'#86EFAC':'#E8D5A3';
   let st,det;
-  if(!total){st='No habits yet 👀';det='Add your first habit below';}
-  else if(p===0){st="Let's begin 🌅";det=`0 of ${total} habits done`;}
-  else if(p<30){st='Getting started 🔥';det=`${done} of ${total} done · keep going`;}
+  if(!total){
+    st='No habits yet 👀';
+    det='0 of 0 habits done';  // fixed: shows 0 of 0 when empty
+  }else if(p===0){
+    st="Let's begin 🌅";
+    det=`0 of ${total} habit${total===1?'':'s'} done`;
+  }else if(p<30){st='Getting started 🔥';det=`${done} of ${total} done · keep going`;}
   else if(p<60){st='Good momentum 💪';det=`${done} of ${total} done · halfway there`;}
   else if(p<100){st='Almost there! ⚡';det=`${done} of ${total} done · finish strong`;}
   else{st='Perfect day! 🎉';det='All habits completed!';}
-  $('progStatus').textContent=st;$('progDetail').textContent=det;
+  $('progStatus').textContent=st;
+  $('progDetail').textContent=det;
   const sb=$('streakBar');sb.innerHTML='';
-  S.habits.slice(0,14).forEach(h=>{const d=document.createElement('div');d.className='sdot'+(h.history[td]?' on':'');sb.appendChild(d);});
+  S.habits.slice(0,14).forEach(h=>{const d=document.createElement('div');d.className='sdot'+((h.history&&h.history[td])?' on':'');sb.appendChild(d);});
 }
 
-// ── USER SCORE ────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// USER SCORE
+// ─────────────────────────────────────────────────────────────
 function updateUserScore(){
   const sc=userScore();
   $('scoreNum').innerHTML=`${sc}<span>/100</span>`;
@@ -715,7 +741,7 @@ function updateUserScore(){
   if(sc>=80){tier='Elite';bc='badge-elite';tr='Outstanding performance · top tier';}
   else if(sc>=60){tier='Pro';bc='badge-pro';tr='Strong consistency · keep pushing';}
   else if(sc>=35){tier='Rising';bc='badge-rising';tr='Building momentum · stay consistent';}
-  else{tier='Starter';bc='badge-starter';tr='Complete habits to grow your score';}
+  else{tier='Starter';bc='badge-starter';tr='Complete habits to build your score';}
   const badge=$('scoreBadge');badge.textContent=tier;badge.className=`score-badge ${bc}`;
   $('sbarFill').style.background=sc>=80?'#4ADE80':sc>=60?'#60A5FA':sc>=35?'#A78BFA':'#C4A96B';
   $('scoreTrend').textContent=tr;
@@ -724,12 +750,15 @@ function updateUserScore(){
   $('metaRate').textContent=overallRate()+'%';
 }
 
-// ── HABIT SCORES ──────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// HABIT SCORES
+// ─────────────────────────────────────────────────────────────
 function renderHabitScores(){
   const list=$('hscoreList');list.innerHTML='';
+  if(!S.habits.length)return;
   S.habits.map(h=>({h,s:habitScore(h)})).sort((a,b)=>b.s-a.s).forEach(({h,s})=>{
     const col=s>=70?'#4ADE80':s>=40?'#FBBF24':'#F87171';
-    const days=Object.keys(h.history).filter(k=>h.history[k]).length;
+    const days=Object.keys(h.history||{}).filter(k=>h.history[k]).length;
     const row=document.createElement('div');row.className='hscore-row';
     row.innerHTML=`
       <div class="hscore-top">
@@ -737,7 +766,7 @@ function renderHabitScores(){
           <span class="hscore-em">${h.emoji}</span>
           <div>
             <div class="hscore-name">${h.name}</div>
-            <div class="hscore-meta">${days}d done · 🔥${h.streak} streak <span class="cat-chip c-${h.cat}">${CAT_LBL[h.cat]||'Custom'}</span></div>
+            <div class="hscore-meta">${days}d done · 🔥${h.streak||0} streak <span class="cat-chip c-${h.cat||'custom'}">${CAT_LBL[h.cat]||'Custom'}</span></div>
           </div>
         </div>
         <div class="hscore-val" style="color:${col}">${s}</div>
@@ -748,11 +777,14 @@ function renderHabitScores(){
   requestAnimationFrame(()=>list.querySelectorAll('.hbar-fill').forEach(el=>el.style.width=el.dataset.t+'%'));
 }
 
-// ── CATEGORY ──────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// CATEGORY
+// ─────────────────────────────────────────────────────────────
 function renderCats(){
   const grid=$('catGrid');grid.innerHTML='';
+  if(!S.habits.length)return;
   const cats={};const td=today();
-  S.habits.forEach(h=>{const c=h.cat||'custom';if(!cats[c])cats[c]={t:0,d:0};cats[c].t++;if(h.history[td])cats[c].d++;});
+  S.habits.forEach(h=>{const c=h.cat||'custom';if(!cats[c])cats[c]={t:0,d:0};cats[c].t++;if(h.history&&h.history[td])cats[c].d++;});
   Object.entries(cats).forEach(([c,{t,d}])=>{
     const p=t?Math.round(d/t*100):0,col=CAT_COLOR[c]||'#888';
     const card=document.createElement('div');card.className='cat-card';
@@ -762,11 +794,17 @@ function renderCats(){
   requestAnimationFrame(()=>grid.querySelectorAll('.cat-bar-fill').forEach(el=>el.style.width=el.dataset.t+'%'));
 }
 
-// ── INSIGHTS ──────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// INSIGHTS
+// ─────────────────────────────────────────────────────────────
 function renderInsights(){
   const ins=[];const td=today();
+  if(!S.habits.length){
+    $('insightsGrid').innerHTML=`<div class="ins-card"><div class="ins-icon">💡</div><div><span class="ins-tag tag-info">INFO</span><div class="ins-title">Add habits to unlock insights</div><div class="ins-sub">Personalised analytics appear after a few days of tracking.</div></div></div>`;
+    $('insCount').textContent=1;return;
+  }
   const dayA=Array(7).fill(null).map(()=>({t:0,d:0}));
-  S.habits.forEach(h=>Object.entries(h.history).forEach(([k,v])=>{const dw=new Date(k).getDay();dayA[dw].t++;if(v)dayA[dw].d++;}));
+  S.habits.forEach(h=>Object.entries(h.history||{}).forEach(([k,v])=>{const dw=new Date(k).getDay();dayA[dw].t++;if(v)dayA[dw].d++;}));
   const dPcts=dayA.map(d=>d.t?Math.round(d.d/d.t*100):null);
   const valid=dPcts.map((p,i)=>({p,i})).filter(x=>x.p!==null);
   if(valid.length>=2){
@@ -782,7 +820,7 @@ function renderInsights(){
     const top=catAvg.reduce((a,b)=>b.avg>a.avg?b:a);
     const low=catAvg.reduce((a,b)=>b.avg<a.avg?b:a);
     if(top.avg>20)ins.push({icon:'🏆',tag:'good',title:`${CAT_LBL[top.c]} is your strongest category`,sub:`Avg habit score ${top.avg} — keep it up!`});
-    if(low.avg<top.avg&&catAvg.length>1)ins.push({icon:'🎯',tag:'info',title:`${CAT_LBL[low.c]} needs more focus`,sub:`Scoring ${low.avg} on avg — small wins add up.`});
+    if(low.avg<top.avg)ins.push({icon:'🎯',tag:'info',title:`${CAT_LBL[low.c]} needs more focus`,sub:`Scoring ${low.avg} on avg — small wins add up.`});
   }
   const s7=k7().map(k=>dayScore(k));
   const rec=Math.round(s7.slice(4).reduce((a,b)=>a+b,0)/3);
@@ -791,9 +829,9 @@ function renderInsights(){
   else if(rec<old-10)ins.push({icon:'📉',tag:'warn',title:'Performance dipped recently',sub:`Last 3 days at ${rec}% vs earlier ${old}%`});
   const onFire=S.habits.filter(h=>h.streak>=3);
   if(onFire.length)ins.push({icon:'🔥',tag:'good',title:`${onFire.length} habit${onFire.length>1?'s':''} on a hot streak`,sub:onFire.map(h=>h.name).join(', ')});
-  const todayDone=S.habits.filter(h=>h.history[td]).length;
+  const todayDone=S.habits.filter(h=>h.history&&h.history[td]).length;
   if(todayDone===S.habits.length&&S.habits.length>0)ins.push({icon:'🎉',tag:'good',title:'Perfect day achieved!',sub:'All habits completed today. Legendary.'});
-  if(!ins.length)ins.push({icon:'💡',tag:'info',title:'Start tracking to unlock insights',sub:'Complete habits over several days for personalised analytics.'});
+  if(!ins.length)ins.push({icon:'💡',tag:'info',title:'Keep tracking to unlock insights',sub:'Complete habits over several days for personalised analytics.'});
   const grid=$('insightsGrid');grid.innerHTML='';$('insCount').textContent=ins.length;
   ins.forEach(x=>{
     const c=document.createElement('div');c.className='ins-card';
@@ -802,8 +840,9 @@ function renderInsights(){
   });
 }
 
-// ── CHART ─────────────────────────────────────────────────────
-let chartRAF=null;
+// ─────────────────────────────────────────────────────────────
+// CHART
+// ─────────────────────────────────────────────────────────────
 function renderChart(){
   const canvas=$('monthChart');if(!canvas)return;
   const wrap=canvas.parentElement;
@@ -816,7 +855,7 @@ function renderChart(){
   const P={t:10,r:10,b:24,l:28},cW=W-P.l-P.r,cH=H-P.t-P.b;
   const keys=k30();
   const scores=keys.map(k=>dayScore(k));
-  const pcts=keys.map(k=>{const t=S.habits.length;if(!t)return 0;return Math.round(S.habits.filter(h=>h.history[k]).length/t*100);});
+  const pcts=keys.map(k=>{const t=S.habits.length;if(!t)return 0;return Math.round(S.habits.filter(h=>h.history&&h.history[k]).length/t*100);});
   const xOf=i=>P.l+(i/(keys.length-1))*cW;
   const yOf=v=>P.t+cH-(v/100)*cH;
   function grid(){
@@ -834,26 +873,29 @@ function renderChart(){
     data.slice(0,n).forEach((v,i)=>i===0?ctx.moveTo(xOf(i),yOf(v)):ctx.lineTo(xOf(i),yOf(v)));
     ctx.stroke();
     ctx.beginPath();data.slice(0,n).forEach((v,i)=>i===0?ctx.moveTo(xOf(i),yOf(v)):ctx.lineTo(xOf(i),yOf(v)));
-    ctx.lineTo(xOf(n-1),yOf(0));ctx.lineTo(xOf(0),yOf(0));ctx.closePath();
-    ctx.fillStyle=color+'15';ctx.fill();
+    ctx.lineTo(xOf(n-1),yOf(0));ctx.lineTo(xOf(0),yOf(0));ctx.closePath();ctx.fillStyle=color+'15';ctx.fill();
   }
   let prog=0;if(chartRAF)cancelAnimationFrame(chartRAF);
   (function frame(){ctx.clearRect(0,0,W,H);grid();line(scores,'#E8D5A3',prog);line(pcts,'#60A5FA',prog);if(prog<1){prog=Math.min(1,prog+0.04);chartRAF=requestAnimationFrame(frame);}})();
 }
 
-// ── REMOVE / ADD ──────────────────────────────────────────────
-function remove(id,card){
+// ─────────────────────────────────────────────────────────────
+// ADD / REMOVE
+// ─────────────────────────────────────────────────────────────
+function removeHabit(id,card){
   card.style.transition='opacity 0.18s,transform 0.18s';card.style.opacity='0';card.style.transform='translateX(24px)';
-  setTimeout(()=>{S.habits=S.habits.filter(x=>x.id!==id);saveToFirestore();renderAll();},180);
+  setTimeout(()=>{S.habits=S.habits.filter(x=>x.id!==id);save();renderAll();},180);
 }
 function addHabit(){
   const name=$('nameInput').value.trim();
   if(!name){$('nameInput').style.borderColor='#F87171';$('nameInput').focus();setTimeout(()=>$('nameInput').style.borderColor='',700);return;}
   S.habits.push({id:nid++,emoji:selEmoji,name,cat:selCat,streak:0,bestStreak:0,history:{}});
-  saveToFirestore();closeForm();renderAll();
+  save();closeForm();renderAll();
 }
 
-// ── FORM ──────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// FORM
+// ─────────────────────────────────────────────────────────────
 function buildPicker(){
   const p=$('emojiPicker');p.innerHTML='';
   EMOJIS.forEach(em=>{
@@ -865,7 +907,9 @@ function buildPicker(){
 function openForm(){formOpen=true;$('addForm').classList.add('open');$('fab').classList.add('open');buildPicker();setTimeout(()=>{$('nameInput').focus();$('addForm').scrollIntoView({behavior:'smooth',block:'nearest'});},80);}
 function closeForm(){formOpen=false;$('addForm').classList.remove('open');$('fab').classList.remove('open');$('nameInput').value='';selEmoji=EMOJIS[0];selCat='health';$('catSelect').value='health';}
 
-// ── SPARKS ────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// SPARKS
+// ─────────────────────────────────────────────────────────────
 function sparks(el){
   const r=el.getBoundingClientRect();
   ['✨','⭐','🌟','💫','✅'].forEach((em,i)=>{
@@ -875,23 +919,25 @@ function sparks(el){
   });
 }
 
-// ── RENDER ALL ────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// RENDER ALL
+// ─────────────────────────────────────────────────────────────
 function updateAll(){updateProgress();updateUserScore();renderHabitScores();renderCats();renderInsights();renderChart();}
 function renderAll(){renderHabits();updateAll();}
 
-// ── EVENTS ────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// EVENTS
+// ─────────────────────────────────────────────────────────────
 $('fab').addEventListener('click',()=>formOpen?closeForm():openForm());
 $('cancelBtn').addEventListener('click',closeForm);
 $('saveBtn').addEventListener('click',addHabit);
 $('nameInput').addEventListener('keydown',e=>{if(e.key==='Enter')addHabit();if(e.key==='Escape')closeForm();});
 $('catSelect').addEventListener('change',e=>selCat=e.target.value);
 window.addEventListener('resize',renderChart);
-
-// ── INIT ──────────────────────────────────────────────────────
-const h=new Date().getHours();
-$('greeting').textContent=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
-$('datechip').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
-$('motiveLine').textContent=MOTIVES[new Date().getDay()%MOTIVES.length];
+window.switchTab=switchTab;
+window.doAuth=doAuth;
+window.doGuest=doGuest;
+window.handleSyncClick=handleSyncClick;
 </script>
 </body>
 </html>
